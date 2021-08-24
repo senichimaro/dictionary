@@ -4,8 +4,6 @@ import './Definitions.css'
 
 const Definitions = ({ themeLight , category , word , meanings }) => {
 
-  console.log("meanings", meanings);
-
   return (
     <>
 
