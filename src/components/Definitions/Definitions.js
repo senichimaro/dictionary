@@ -29,13 +29,14 @@ const Definitions = ({ themeLight , category , word , meanings }) => {
             {
               meanings.map( mean => (
                 mean.meanings.map( item => (
-                  item.definitions.map( def => (
+                  item.definitions.map( ( def , key ) => (
                     <div
                       className="singleMean"
                       style={{
                         backgroundColor:themeLight ? '#3b5360' : 'white',
                         color:themeLight ? '#fff' : 'black'
                       }}
+                      key={key}
                     >
                       <b>{ def.definition }</b>
 

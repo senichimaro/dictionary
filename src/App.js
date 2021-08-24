@@ -17,7 +17,6 @@ import {
 // Meterial UI Components Imports
 import {
   Container,
-  FormControlLabel,
   Switch
 } from '@material-ui/core'
 
@@ -30,7 +29,7 @@ import Definitions from './components/Definitions/Definitions'
 
 function App() {
   const [ meanings , setMeanings ] = useState([])
-  const [ word , setWord ] = useState('')
+  const [ word , setWord ] = useState('Dictionary')
   const [ category , setCategory ] = useState('en')
   const [ themeLight , setThemeLight ] = useState(false)
 
@@ -51,17 +50,17 @@ function App() {
   })(Switch);
 
 
-  const dictionaryApi = async () => {
-    try {
-      const data = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/${category}/${word}`)
-      // console.log("data", data.data);
-      setMeanings( data.data )
-    }
-    catch(e) { console.error(`ERROR at App.js dictionaryApi: ${e.message}`) }
-  }
 
   // console.log("meanings", meanings);
   useEffect(() => {
+    const dictionaryApi = async () => {
+      try {
+        const data = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/${category}/${word}`)
+          // console.log("data", data.data);
+          setMeanings( data.data )
+        }
+        catch(e) { console.error(`ERROR at App.js dictionaryApi: ${e.message}`) }
+      }
     dictionaryApi()
     // console.log("useEffect");
   },[word , category])
